@@ -111,6 +111,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: true,
                         updatedAt: false
@@ -120,6 +121,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: true,
                         updatedAt: false
@@ -237,6 +239,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -246,6 +249,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -347,6 +351,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -356,6 +361,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -508,6 +514,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -517,6 +524,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -607,6 +615,7 @@ export const lists: Lists = {
                     }
                 }),
                 startsAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -616,6 +625,7 @@ export const lists: Lists = {
                     }
                 }),
                 endsAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -685,6 +695,7 @@ export const lists: Lists = {
                     }
                 }),
                 startsAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -694,6 +705,7 @@ export const lists: Lists = {
                     }
                 }),
                 endsAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -820,6 +832,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -829,6 +842,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -903,6 +917,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -912,6 +927,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -988,6 +1004,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -997,6 +1014,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1027,6 +1045,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1036,6 +1055,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1101,6 +1121,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1110,6 +1131,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1201,6 +1223,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1210,6 +1233,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1359,6 +1383,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1368,6 +1393,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1456,6 +1482,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1465,6 +1492,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1541,6 +1569,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1550,6 +1579,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1681,6 +1711,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1690,6 +1721,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
                         updatedAt: false

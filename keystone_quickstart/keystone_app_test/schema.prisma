@@ -22,8 +22,8 @@ model User {
   isEmailValidated                Boolean           @default(false)
   active                          Boolean           @default(false)
   lastLogin                       DateTime?
-  createdAt                       DateTime?
-  updatedAt                       DateTime?
+  createdAt                       DateTime?         @default(now())
+  updatedAt                       DateTime?         @default(now())
   permissionGroupsAuthored        PermissionGroup[] @relation("PermissionGroupsAuthoredToUser")
   productTypes                    ProductType[]     @relation("ProductTypeToUser")
   attributes                      Attribute[]       @relation("AttributeToUser")
@@ -54,8 +54,8 @@ model PermissionGroup {
   id                                 String       @id @default(cuid())
   name                               String       @default("")
   slug                               String       @default("")
-  createdAt                          DateTime
-  updatedAt                          DateTime
+  createdAt                          DateTime     @default(now())
+  updatedAt                          DateTime     @default(now())
   authorUser                         User?        @relation("PermissionGroup_authorUser", fields: [authorUserId], references: [id])
   authorUserId                       String?      @map("authorUser")
   publisher                          Publisher?   @relation("PermissionGroup_publisher", fields: [publisherId], references: [id])
@@ -85,8 +85,8 @@ model Product {
   defaultAttributesValues     String           @default("")
   isPublished                 Boolean          @default(false)
   brand                       String           @default("")
-  createdAt                   DateTime
-  updatedAt                   DateTime
+  createdAt                   DateTime         @default(now())
+  updatedAt                   DateTime         @default(now())
   publisher                   Publisher?       @relation("Product_publisher", fields: [publisherId], references: [id])
   publisherId                 String?          @map("publisher")
   authorUser                  User?            @relation("Product_authorUser", fields: [authorUserId], references: [id])
@@ -120,8 +120,8 @@ model ProductVariant {
   description                        String           @default("")
   weight                             Int
   revenue                            Int
-  createdAt                          DateTime
-  updatedAt                          DateTime
+  createdAt                          DateTime         @default(now())
+  updatedAt                          DateTime         @default(now())
   product                            Product?         @relation("ProductVariant_product", fields: [productId], references: [id])
   productId                          String?          @map("product")
   pricing                            Pricing?         @relation("ProductVariant_pricing", fields: [pricingId], references: [id])
@@ -153,8 +153,8 @@ model Pricing {
   listPrice                   String           @default("")
   costPrice                   String           @default("")
   status                      String           @default("")
-  startsAt                    DateTime
-  endsAt                      DateTime
+  startsAt                    DateTime         @default(now())
+  endsAt                      DateTime         @default(now())
   authorUser                  User?            @relation("Pricing_authorUser", fields: [authorUserId], references: [id])
   authorUserId                String?          @map("authorUser")
   productVariant              ProductVariant[] @relation("PricingToProductVariant")
@@ -175,8 +175,8 @@ model Discount {
   usageLimit                 Int
   status                     Boolean        @default(false)
   priority                   Int
-  startsAt                   DateTime
-  endsAt                     DateTime
+  startsAt                   DateTime       @default(now())
+  endsAt                     DateTime       @default(now())
   authorUser                 User?          @relation("Discount_authorUser", fields: [authorUserId], references: [id])
   authorUserId               String?        @map("authorUser")
   publisher                  Publisher?     @relation("Discount_publisher", fields: [publisherId], references: [id])
@@ -213,8 +213,8 @@ model ProductType {
   name                         String      @default("")
   slug                         String      @default("")
   isShippingRequired           Boolean     @default(false)
-  createdAt                    DateTime
-  updatedAt                    DateTime
+  createdAt                    DateTime    @default(now())
+  updatedAt                    DateTime    @default(now())
   authorUser                   User?       @relation("ProductType_authorUser", fields: [authorUserId], references: [id])
   authorUserId                 String?     @map("authorUser")
   product                      Product?    @relation("ProductType_product", fields: [productId], references: [id])
@@ -240,8 +240,8 @@ model Attribute {
   isRequired                 Boolean       @default(false)
   isVisible                  Boolean       @default(false)
   isFilterable               Boolean       @default(false)
-  createdAt                  DateTime
-  updatedAt                  DateTime
+  createdAt                  DateTime      @default(now())
+  updatedAt                  DateTime      @default(now())
   authorUser                 User?         @relation("Attribute_authorUser", fields: [authorUserId], references: [id])
   authorUserId               String?       @map("authorUser")
   publisher                  Publisher?    @relation("Attribute_publisher", fields: [publisherId], references: [id])
@@ -271,8 +271,8 @@ model ProductPayment {
 model Tag {
   id               String    @id @default(cuid())
   value            String    @default("")
-  createdAt        DateTime
-  updatedAt        DateTime
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @default(now())
   product          Product[] @relation("TagToProduct")
   from_Product_tag Product[] @relation("ProductToTag")
 }
@@ -280,8 +280,8 @@ model Tag {
 model Category {
   id                               String     @id @default(cuid())
   name                             String     @default("")
-  createdAt                        DateTime
-  updatedAt                        DateTime
+  createdAt                        DateTime   @default(now())
+  updatedAt                        DateTime   @default(now())
   parentCategory                   Category?  @relation("Category_parentCategory", fields: [parentCategoryId], references: [id])
   parentCategoryId                 String?    @map("parentCategory")
   childrenCategories               Category[] @relation("ParentCategory")
@@ -299,8 +299,8 @@ model Collection {
   slug                      String      @default("")
   isVisible                 Boolean     @default(false)
   description               String      @default("")
-  createdAt                 DateTime
-  updatedAt                 DateTime
+  createdAt                 DateTime    @default(now())
+  updatedAt                 DateTime    @default(now())
   authorUser                User?       @relation("Collection_authorUser", fields: [authorUserId], references: [id])
   authorUserId              String?     @map("authorUser")
   publisher                 Publisher?  @relation("Collection_publisher", fields: [publisherId], references: [id])
@@ -323,8 +323,8 @@ model Publisher {
   country                        String            @default("")
   description                    String            @default("")
   socialMedias                   String            @default("")
-  createdAt                      DateTime
-  updatedAt                      DateTime
+  createdAt                      DateTime          @default(now())
+  updatedAt                      DateTime          @default(now())
   authorUser                     User?             @relation("Publisher_authorUser", fields: [authorUserId], references: [id])
   authorUserId                   String?           @map("authorUser")
   attributes                     Attribute[]       @relation("PublisherToAttribute")
@@ -368,8 +368,8 @@ model Channel {
   slug                              String                 @default("")
   isActive                          Boolean                @default(false)
   currencyCode                      String                 @default("")
-  createdAt                         DateTime
-  updatedAt                         DateTime
+  createdAt                         DateTime               @default(now())
+  updatedAt                         DateTime               @default(now())
   authorUser                        User?                  @relation("Channel_authorUser", fields: [authorUserId], references: [id])
   authorUserId                      String?                @map("authorUser")
   publisher                         Publisher?             @relation("Channel_publisher", fields: [publisherId], references: [id])
@@ -398,8 +398,8 @@ model Warehouse {
   name                        String         @default("")
   slug                        String         @default("")
   shippingZones               Json?
-  createdAt                   DateTime
-  updatedAt                   DateTime
+  createdAt                   DateTime       @default(now())
+  updatedAt                   DateTime       @default(now())
   authorUser                  User?          @relation("Warehouse_authorUser", fields: [authorUserId], references: [id])
   authorUserId                String?        @map("authorUser")
   publisher                   Publisher?     @relation("Warehouse_publisher", fields: [publisherId], references: [id])
@@ -425,8 +425,8 @@ model Order {
   subtotal                   String            @default("")
   total                      String            @default("")
   balancedTotal              String            @default("")
-  createdAt                  DateTime
-  updatedAt                  DateTime
+  createdAt                  DateTime          @default(now())
+  updatedAt                  DateTime          @default(now())
   productPayment             ProductPayment[]  @relation("ProductPaymentToOrder")
   ShippingCarrier            ShippingCarrier?  @relation("Order_ShippingCarrier", fields: [ShippingCarrierId], references: [id])
   ShippingCarrierId          String?           @map("ShippingCarrier")
@@ -472,8 +472,8 @@ model Tracking {
   id                        String        @id @default(cuid())
   trackingNumber            Int
   url                       String        @default("")
-  createdAt                 DateTime
-  updatedAt                 DateTime
+  createdAt                 DateTime      @default(now())
+  updatedAt                 DateTime      @default(now())
   fullfilment               Fullfilment?  @relation("Tracking_fullfilment", fields: [fullfilmentId], references: [id])
   fullfilmentId             String?       @map("fullfilment")
   from_Fullfilment_Tracking Fullfilment[] @relation("Fullfilment_Tracking")

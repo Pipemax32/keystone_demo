@@ -20,7 +20,7 @@ export default withAuth(
     // the db sets the database provider - we're using sqlite for the fastest startup experience
     db: {
       provider: 'postgresql',
-      url: 'postgresql://kovix:kovix@localhost:5432/keymkp?schema=public',
+      url: 'postgresql://training:training@localhost:5432/keymkp?schema=public',
     },
     // This config allows us to set up features of the Admin UI https://keystonejs.com/docs/apis/config#ui
     ui: {
