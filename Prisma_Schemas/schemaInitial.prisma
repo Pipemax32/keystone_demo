@@ -1,0 +1,576 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int      @id @default(autoincrement())
+  name             String
+  email            String
+  password         String
+  phone            String
+  identification   String
+  isEmailValidated Boolean  @map("is_email_validated")
+  active           Boolean
+  lastLogin        DateTime @map("last_login")
+  createdAt        DateTime @map("created_at")
+  updatedAt        DateTime @map("updated_at")
+
+  userPermissionGroups UserPermissionGroup[]
+
+  productTypes     ProductType[]
+  attributes       Attribute[]
+  permissionGroups PermissionGroup[]
+  publishers       Publisher[]
+  collections      Collection[]
+  products         Product[]
+  productsVariants ProductVariant[]
+  pricings         Pricing[]
+  discounts        Discount[]
+  channels         Channel[]
+  warehouses       Warehouse[]
+}
+
+model UserPermissionGroup {
+  userId            Int @map("user_id")
+  permissionGroupId Int @map("permission_group_id")
+
+  user            User            @relation(fields: [userId], references: [id])
+  permissionGroup PermissionGroup @relation(fields: [permissionGroupId], references: [id])
+
+  @@id([userId, permissionGroupId])
+}
+
+model PermissionGroup {
+  id           Int      @id @default(autoincrement())
+  publisherId  Int      @map("publisher_id") //FK
+  name         String
+  slug         String
+  authorUserId Int      @map("author_user_id")
+  createdAt    DateTime @map("created_at")
+  updatedAt    DateTime @map("updated_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  userPermissionGroup       UserPermissionGroup[]
+  permissionGroupPermission PermissionGroupPermission[]
+}
+
+model PermissionGroupPermission {
+  permissionGroupId Int @map("permission_group_id")
+  permissionId      Int @map("permission_id")
+
+  permissionGroup PermissionGroup @relation(fields: [permissionGroupId], references: [id])
+  permission      Permission      @relation(fields: [permissionId], references: [id])
+
+  @@id([permissionGroupId, permissionId])
+}
+
+model Permission {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  permissionGroupPermission PermissionGroupPermission[]
+}
+
+model Product {
+  id                      Int      @id @default(autoincrement())
+  publisherId             Int      @map("publisher_id") // FK
+  defaultVariantId        Int      @map("default_variant_id")
+  name                    String
+  slug                    String
+  defaultAttributesValues String[] @map("default_attributes_values")
+  isPublished             Boolean  @map("is_published")
+  brand                   String
+  authorUserId            Int      @map("author_user_id")
+  createdAt               DateTime @map("created_at")
+  updatedAt               DateTime @map("updated_at")
+
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+
+  collectionProduct CollectionProduct[]
+  categoryProduct   CategoryProduct[]
+  tagProduct        TagProduct[]
+
+  productVariant ProductVariant[]
+  productType    ProductType[]
+}
+
+model ProductVariant {
+  id                       Int      @id @default(autoincrement())
+  stockId                  Int      @map("stock_id") // FK
+  pricingId                Int      @map("pricing_id") // FK
+  productId                Int      @map("product_id") // FK
+  sku                      String
+  extensionName            String   @map("extension_name")
+  slug                     String
+  barcode                  Int
+  imagesUrl                String[] @map("images_url")
+  mediaUrl                 String[] @map("media_url")
+  attributesVariantsValues String[] @map("attributes_variants_values")
+  description              String
+  weight                   Int
+  revenue                  Int
+  authorUserId             Int      @map("author_user_id")
+  createdAt                DateTime @map("created_at")
+  updatedAt                DateTime @map("updated_at")
+
+  product      Product      @relation(fields: [productId], references: [id])
+  pricing      Pricing      @relation(fields: [pricingId], references: [id])
+  authorUser   User         @relation(fields: [authorUserId], references: [id])
+  productStock ProductStock @relation(fields: [stockId], references: [id])
+
+  productPaymentProductVariant ProductPaymentProductVariant[]
+  channelProductVariant        ChannelProductVariant[]
+  productVariantFullfilment    ProductVariantFullfilment[]
+}
+
+model Pricing {
+  id           Int      @id @default(autoincrement())
+  currency     String
+  listPrice    Decimal  @map("list_price")
+  costPrice    Decimal  @map("cost_price")
+  status       String
+  authorUserId Int      @map("author_user_id") // FK
+  startsAt     DateTime @map("starts_at")
+  endsAt       DateTime @map("ends_at")
+
+  authorUser User @relation(fields: [authorUserId], references: [id])
+
+  pricingDiscount PricingDiscount[]
+  ChannelPricing  ChannelPricing[]
+
+  productVariant ProductVariant[]
+}
+
+model PricingDiscount {
+  pricingId  Int @map("pricing_id")
+  discountId Int @map("discount_id")
+
+  pricing  Pricing  @relation(fields: [pricingId], references: [id])
+  discount Discount @relation(fields: [discountId], references: [id])
+
+  @@id([pricingId, discountId])
+}
+
+model Discount {
+  id           Int      @id @default(autoincrement())
+  publisherId  Int      @map("publisher_id") //FK
+  code         Int
+  isDisabled   Boolean  @map("is_disabled")
+  usageLimit   Int      @map("usage_limit")
+  status       Boolean
+  priority     Int
+  authorUserId Int      @map("author_user_id") // FK
+  startsAt     DateTime @map("starts_at")
+  endsAt       DateTime @map("ends_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  pricingDiscount PricingDiscount[]
+  ChannelDiscount ChannelDiscount[]
+
+  DiscountRule DiscountRule?
+}
+
+model DiscountRule {
+  id          Int    @id @default(autoincrement())
+  discountId  Int    @unique @map("dicount_id")
+  type        String
+  value       String
+  allocation  String
+  description String
+  conditions  String
+
+  discount Discount @relation(fields: [discountId], references: [id])
+}
+
+model ProductType {
+  id                   Int      @id @default(autoincrement())
+  productId            Int      @map("product_id") // FK
+  publisherId          Int      @map("publisher_id") //FK
+  name                 String
+  slug                 String
+  defaultAttributesId  Int[]    @map("defualt_attributes_id")
+  attributesVariantsId Int[]    @map("attributes_variants_id")
+  isShippingRequired   Boolean  @map("is_shipping_required")
+  authorUserId         Int      @map("author_user_id") // FK
+  createdAt            DateTime @map("created_at")
+  updatedAt            DateTime @map("updated_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  product    Product   @relation(fields: [productId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  productTypeAttribute ProductTypeAttribute[]
+}
+
+model ProductTypeAttribute {
+  productTypeId Int     @map("product_type_id")
+  attributeId   Int     @map("attribute_id")
+  isVariant     Boolean @map("is_variant")
+
+  productType ProductType @relation(fields: [productTypeId], references: [id])
+  attribute   Attribute   @relation(fields: [attributeId], references: [id])
+
+  @@id([productTypeId, attributeId])
+}
+
+model Attribute {
+  id           Int      @id @default(autoincrement())
+  name         String
+  slug         String
+  choices      String[]
+  isRequired   Boolean  @map("is_required")
+  isVisible    Boolean  @map("is_visible")
+  isFilterable Boolean  @map("is_filterable")
+  authorUserId Int      @map("author_user_id") // FK
+  publisherId  Int      @map("publisher_id") // FK
+  createdAt    DateTime @map("created_at")
+  updatedAt    DateTime @map("updated_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  productTypeAttribute ProductTypeAttribute[]
+}
+
+model ProductPaymentProductVariant {
+  productVariantId Int @map("product_variant_id")
+  productPaymentId Int @map("product_payment_id")
+
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id])
+  productPayment ProductPayment @relation(fields: [productPaymentId], references: [id])
+
+  @@id([productPaymentId, productVariantId])
+}
+
+model ProductPayment {
+  id            Int    @id @default(autoincrement())
+  orderId       Int    @map("order_id")
+  paymentMethod String @map("payment_method")
+  transaction   String
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  productPaymentProductVariant ProductPaymentProductVariant[]
+}
+
+model Tag {
+  id        Int      @id @default(autoincrement())
+  value     String
+  createdAt DateTime @map("created_at")
+  updatedAt DateTime @map("updated_at")
+
+  tagProduct TagProduct[]
+}
+
+model TagProduct {
+  tagId     Int @map("tag_id")
+  productId Int @map("product_id")
+
+  tag     Tag     @relation(fields: [tagId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@id([tagId, productId])
+}
+
+model Category {
+  id               Int      @id @default(autoincrement())
+  name             String
+  parentCategoryId Int?     @map("parent_category_id") // FK?
+  createdAt        DateTime @map("created_at")
+  updatedAt        DateTime @map("updated_at")
+
+  parentCategory     Category?  @relation("ParentCategory", fields: [parentCategoryId], references: [id])
+  childrenCategories Category[] @relation("ParentCategory")
+
+  categoryProduct CategoryProduct[]
+}
+
+model CategoryProduct {
+  categoryId Int @map("category_id")
+  productId  Int @map("product_id")
+
+  category Category @relation(fields: [categoryId], references: [id])
+  product  Product  @relation(fields: [productId], references: [id])
+
+  @@id([categoryId, productId])
+}
+
+model Collection {
+  id           Int      @id @default(autoincrement())
+  name         String
+  slug         String
+  isVisible    Boolean  @map("is_visible")
+  description  String
+  authorUserId Int      @map("author_user_id") // FK
+  publisherId  Int      @map("publisher_id")
+  createdAt    DateTime @map("created_at")
+  updatedAt    DateTime @map("updated_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  collectionProduct CollectionProduct[]
+}
+
+model CollectionProduct {
+  collectionId Int @map("collection_id")
+  productId    Int @map("product_id")
+
+  collection Collection @relation(fields: [collectionId], references: [id])
+  product    Product    @relation(fields: [productId], references: [id])
+
+  @@id([collectionId, productId])
+}
+
+model Publisher {
+  id           Int      @id @default(autoincrement())
+  name         String
+  slug         String
+  logo         Json
+  phone        Int
+  country      String
+  description  String
+  socialMedias String[] @map("social_medias")
+  authorUserId Int      @map("author_user_id")
+  createdAt    DateTime @map("created_at")
+  updatedAt    DateTime @map("updated_at")
+
+  authorUser User @relation(fields: [authorUserId], references: [id])
+
+  attributes       Attribute[]
+  productsTypes    ProductType[]
+  products         Product[]
+  permissionGroups PermissionGroup[]
+  commisions       Commision[]
+  warehouses       Warehouse[]
+  discount         Discount[]
+  channels         Channel[]
+  collection       Collection[]
+}
+
+model Commision {
+  id               Int    @id @default(autoincrement())
+  publisherId      Int    @map("publisher_id") // FK
+  fixCost          Int    @map("fix_cost")
+  percentageCost   Int    @map("percentage_cost")
+  custom_func_cost String @map("custon_func_cost")
+
+  publisher Publisher @relation(fields: [publisherId], references: [id])
+}
+
+model Channel {
+  id           Int      @id @default(autoincrement())
+  publisherId  Int      @map("publisher_id")
+  name         String
+  slug         String
+  isActive     Boolean  @map("is_active")
+  currencyCode String   @map("currency_code")
+  authorUserId Int      @map("author_user_id")
+  createdAt    DateTime @map("created_at")
+  updatedAt    DateTime @map("updated_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  channelPaymentsMethodChannels ChannelPaymentMethodChannel[]
+  channelProductVariant         ChannelProductVariant[]
+  channelPricing                ChannelPricing[]
+  channelShippingMethods        ChannelShippingMethod[]
+  channelDiscounts              ChannelDiscount[]
+  channelWarehouse              ChannelWarehouse[]
+}
+
+model ChannelProductVariant {
+  channelId        Int @map("channel_id")
+  productVariantId Int @map("product_variant_id")
+
+  channel        Channel        @relation(fields: [channelId], references: [id])
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id])
+
+  @@id([productVariantId, channelId])
+}
+
+model ChannelPricing {
+  channelId Int @map("channel_id")
+  pricingId Int @map("pricing_id")
+
+  channel Channel @relation(fields: [channelId], references: [id])
+  pricing Pricing @relation(fields: [pricingId], references: [id])
+
+  @@id([pricingId, channelId])
+}
+
+model Warehouse {
+  id            Int      @id @default(autoincrement())
+  stockId       Int      @map("stock_id") // FK
+  publisherId   Int      @map("publisher_id") // FK
+  name          String
+  slug          String
+  shippingZones Json     @map("shipping_zones")
+  authorUserId  Int      @map("author_user_id")
+  createdAt     DateTime @map("created_at")
+  updatedAt     DateTime @map("updated_at")
+
+  authorUser User      @relation(fields: [authorUserId], references: [id])
+  publisher  Publisher @relation(fields: [publisherId], references: [id])
+
+  channelWarehouse ChannelWarehouse[]
+
+  productStock ProductStock[]
+  Address      Address?
+}
+
+model Order {
+  id            Int      @id @default(autoincrement())
+  status        String
+  subtotal      Decimal
+  total         Decimal
+  balancedTotal Decimal  @map("balanced_total")
+  createdAt     DateTime @map("created_at")
+  updatedAt     DateTime @map("updated_at")
+
+  productPayment  ProductPayment[]
+  ShippingCarrier ShippingCarrier?
+}
+
+model ShippingCarrier {
+  id       Int     @id @default(autoincrement())
+  orderId  Int     @unique @map("order_id") // FK
+  name     String
+  currency String
+  amount   Decimal
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  Fullfilment Fullfilment[]
+}
+
+model Fullfilment {
+  id                Int     @id @default(autoincrement())
+  shippingCarrierId Int     @map("shipping_carrier_id")
+  email             String
+  shippedAt         String  @map("shipped_at")
+  status            Boolean
+
+  shippingCarrier ShippingCarrier @relation(fields: [shippingCarrierId], references: [id])
+
+  productVariantFullfilment ProductVariantFullfilment[]
+
+  Tracking Tracking?
+}
+
+model ProductVariantFullfilment {
+  productVariantId Int @map("product_variant_id")
+  fullfilmentId    Int @map("fullfilment_id")
+
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id])
+  fullfilment    Fullfilment    @relation(fields: [fullfilmentId], references: [id])
+
+  @@id([fullfilmentId, productVariantId])
+}
+
+model Tracking {
+  id             Int      @id @default(autoincrement())
+  fullfilmentId  Int      @unique @map("fullfilment_id") // FK
+  trackingNumber Int      @map("tracking_number")
+  url            String
+  createdAt      DateTime @map("created_at")
+  updatedAt      DateTime @map("updated_at")
+
+  fullfilment Fullfilment @relation(fields: [fullfilmentId], references: [id])
+}
+
+model ChannelPaymentMethod {
+  id          Int     @id @default(autoincrement())
+  name        String
+  isAvailable Boolean @map("is_available")
+
+  channelPaymentMethodChannel ChannelPaymentMethodChannel[]
+}
+
+model ChannelPaymentMethodChannel {
+  channelId              Int @map("channel_id")
+  channelPaymentMethodId Int @map("channel_payment_method_id")
+
+  channel              Channel              @relation(fields: [channelId], references: [id])
+  channelPaymentMethod ChannelPaymentMethod @relation(fields: [channelPaymentMethodId], references: [id])
+
+  @@id([channelId, channelPaymentMethodId])
+}
+
+model Address {
+  id           Int    @id @default(autoincrement())
+  warehouseId  Int    @unique @map("warehouse_id")
+  country      String
+  countryArea  String @map("country_area")
+  city         String
+  zipCode      String @map("zip_code")
+  streetAdress String @map("street_address")
+  extraDetails String @map("extra_details")
+
+  warehouse Warehouse @relation(fields: [warehouseId], references: [id])
+}
+
+model ChannelShippingMethod {
+  channelId        Int @map("channel_id")
+  shippingMethodId Int @map("shipping_method_id")
+
+  channel        Channel        @relation(fields: [channelId], references: [id])
+  shippingMethod ShippingMethod @relation(fields: [shippingMethodId], references: [id])
+
+  @@id([channelId, shippingMethodId])
+}
+
+model ShippingMethod {
+  id           Int    @id @default(autoincrement())
+  name         String
+  currency     String
+  amount       Float
+  requeriments Json
+
+  channelShippingMethod ChannelShippingMethod[]
+}
+
+model ProductStock {
+  id          Int    @id @default(autoincrement())
+  sku         String
+  stock       Int
+  warehouseId Int    @map("warehouse_id")
+
+  warehouse Warehouse @relation(fields: [warehouseId], references: [id])
+
+  productVariant ProductVariant[]
+}
+
+model ChannelWarehouse {
+  channelId   Int @map("channel_id")
+  warehouseId Int @map("warehouse_id")
+
+  channel   Channel   @relation(fields: [channelId], references: [id])
+  warehouse Warehouse @relation(fields: [warehouseId], references: [id])
+
+  @@id([channelId, warehouseId])
+}
+
+model ChannelDiscount {
+  channelId  Int @map("channel_id")
+  discountId Int @map("discount_id")
+
+  channel  Channel  @relation(fields: [channelId], references: [id])
+  discount Discount @relation(fields: [discountId], references: [id])
+
+  @@id([channelId, discountId])
+}
