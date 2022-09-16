@@ -8,6 +8,13 @@ type User {
   password: PasswordState
   phone: String
   identification: String
+  permissionGroups(
+    where: PermissionGroupWhereInput! = {}
+    orderBy: [PermissionGroupOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [PermissionGroup!]
+  permissionGroupsCount(where: PermissionGroupWhereInput! = {}): Int
 }
 
 type PasswordState {
@@ -27,6 +34,7 @@ input UserWhereInput {
   name: StringFilter
   email: StringFilter
   identification: StringFilter
+  permissionGroups: PermissionGroupManyRelationFilter
 }
 
 input IDFilter {
@@ -74,6 +82,12 @@ input NestedStringFilter {
   not: NestedStringFilter
 }
 
+input PermissionGroupManyRelationFilter {
+  every: PermissionGroupWhereInput
+  some: PermissionGroupWhereInput
+  none: PermissionGroupWhereInput
+}
+
 input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
@@ -92,6 +106,14 @@ input UserUpdateInput {
   password: String
   phone: String
   identification: String
+  permissionGroups: PermissionGroupRelateToManyForUpdateInput
+}
+
+input PermissionGroupRelateToManyForUpdateInput {
+  disconnect: [PermissionGroupWhereUniqueInput!]
+  set: [PermissionGroupWhereUniqueInput!]
+  create: [PermissionGroupCreateInput!]
+  connect: [PermissionGroupWhereUniqueInput!]
 }
 
 input UserUpdateArgs {
@@ -105,6 +127,12 @@ input UserCreateInput {
   password: String
   phone: String
   identification: String
+  permissionGroups: PermissionGroupRelateToManyForCreateInput
+}
+
+input PermissionGroupRelateToManyForCreateInput {
+  create: [PermissionGroupCreateInput!]
+  connect: [PermissionGroupWhereUniqueInput!]
 }
 
 type PermissionGroup {
@@ -440,6 +468,7 @@ type ProductVariant {
   attributesVariantsValues: String
   description: String
   weight: Int
+  product: Product
   pricing: Pricing
   channel(
     where: ChannelWhereInput! = {}
@@ -469,6 +498,7 @@ input ProductVariantWhereInput {
   attributesVariantsValues: StringFilter
   description: StringFilter
   weight: IntFilter
+  product: ProductWhereInput
   pricing: PricingWhereInput
   channel: ChannelManyRelationFilter
   productStock: ProductStockWhereInput
@@ -525,9 +555,16 @@ input ProductVariantUpdateInput {
   attributesVariantsValues: String
   description: String
   weight: Int
+  product: ProductRelateToOneForUpdateInput
   pricing: PricingRelateToOneForUpdateInput
   channel: ChannelRelateToManyForUpdateInput
   productStock: ProductStockRelateToOneForUpdateInput
+}
+
+input ProductRelateToOneForUpdateInput {
+  create: ProductCreateInput
+  connect: ProductWhereUniqueInput
+  disconnect: Boolean
 }
 
 input PricingRelateToOneForUpdateInput {
@@ -564,9 +601,15 @@ input ProductVariantCreateInput {
   attributesVariantsValues: String
   description: String
   weight: Int
+  product: ProductRelateToOneForCreateInput
   pricing: PricingRelateToOneForCreateInput
   channel: ChannelRelateToManyForCreateInput
   productStock: ProductStockRelateToOneForCreateInput
+}
+
+input ProductRelateToOneForCreateInput {
+  create: ProductCreateInput
+  connect: ProductWhereUniqueInput
 }
 
 input PricingRelateToOneForCreateInput {

@@ -160,7 +160,6 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroups: relationship({
-                    graphql: {omit: true},
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -536,7 +535,7 @@ export const lists: Lists = {
                         isNullable: false
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 createdAt: timestamp({
@@ -562,7 +561,6 @@ export const lists: Lists = {
                     }
                 }),
                 product: relationship({
-                    graphql: {omit: true},
                     ref: "Product",
                     many: false,
                     db: {}
@@ -1852,6 +1850,9 @@ export const lists: Lists = {
             }
         }),
     Address: list({
+            ui: {
+                labelField: "streetAdress"
+            },
             fields: {
                 country: text({
                     isFilterable: true,
