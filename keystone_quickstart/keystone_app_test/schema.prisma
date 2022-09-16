@@ -92,7 +92,8 @@ model Product {
   authorUser                  User?            @relation("Product_authorUser", fields: [authorUserId], references: [id])
   authorUserId                String?          @map("authorUser")
   productVariant              ProductVariant[] @relation("ProductToProductVariant")
-  productType                 ProductType[]    @relation("ProductToProductType")
+  productType                 ProductType?     @relation("Product_productType", fields: [productTypeId], references: [id])
+  productTypeId               String?          @map("productType")
   tag                         Tag[]            @relation("ProductToTag")
   category                    Category[]       @relation("ProductToCategory")
   collection                  Collection[]     @relation("ProductToCollection")
@@ -106,6 +107,7 @@ model Product {
 
   @@index([publisherId])
   @@index([authorUserId])
+  @@index([productTypeId])
 }
 
 model ProductVariant {
@@ -223,7 +225,7 @@ model ProductType {
   publisherId                  String?     @map("publisher")
   attribute                    Attribute[] @relation("ProductTypeToAttribute")
   from_User_productTypes       User[]      @relation("ProductTypeToUser")
-  from_Product_productType     Product[]   @relation("ProductToProductType")
+  from_Product_productType     Product[]   @relation("Product_productType")
   from_Attribute_productType   Attribute[] @relation("AttributeToProductType")
   from_Publisher_productsTypes Publisher[] @relation("PublisherToProductType")
 

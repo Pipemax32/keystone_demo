@@ -96,15 +96,36 @@ export const lists: Lists = {
                     }
                 }),
                 isEmailValidated: checkbox({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     db: {}
                 }),
                 active: checkbox({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     db: {}
                 }),
                 lastLogin: timestamp({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     db: {
                         isNullable: true,
                         updatedAt: false
@@ -114,8 +135,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: true,
                         updatedAt: false
@@ -125,8 +155,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: true,
                         updatedAt: false
@@ -136,7 +175,14 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroupsAuthored: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -144,7 +190,14 @@ export const lists: Lists = {
                     }
                 }),
                 productTypes: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductType",
                     many: true,
                     db: {
@@ -152,7 +205,14 @@ export const lists: Lists = {
                     }
                 }),
                 attributes: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Attribute",
                     many: true,
                     db: {
@@ -167,7 +227,14 @@ export const lists: Lists = {
                     }
                 }),
                 publishers: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Publisher",
                     many: true,
                     db: {
@@ -175,7 +242,14 @@ export const lists: Lists = {
                     }
                 }),
                 collections: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Collection",
                     many: true,
                     db: {
@@ -183,7 +257,14 @@ export const lists: Lists = {
                     }
                 }),
                 products: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Product",
                     many: true,
                     db: {
@@ -191,7 +272,14 @@ export const lists: Lists = {
                     }
                 }),
                 productsVariants: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductVariant",
                     many: true,
                     db: {
@@ -199,7 +287,14 @@ export const lists: Lists = {
                     }
                 }),
                 pricings: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Pricing",
                     many: true,
                     db: {
@@ -207,7 +302,14 @@ export const lists: Lists = {
                     }
                 }),
                 discounts: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Discount",
                     many: true,
                     db: {
@@ -215,7 +317,14 @@ export const lists: Lists = {
                     }
                 }),
                 channels: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Channel",
                     many: true,
                     db: {
@@ -223,7 +332,14 @@ export const lists: Lists = {
                     }
                 }),
                 warehouses: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Warehouse",
                     many: true,
                     db: {
@@ -255,8 +371,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -266,8 +391,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -277,7 +411,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -288,7 +429,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 user: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: true,
                     db: {
@@ -317,7 +465,14 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroup: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -372,8 +527,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -383,8 +547,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -399,7 +572,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -413,7 +593,7 @@ export const lists: Lists = {
                 }),
                 productType: relationship({
                     ref: "ProductType",
-                    many: true,
+                    many: false,
                     db: {
                         relationName: "ProductToProductType"
                     }
@@ -530,7 +710,14 @@ export const lists: Lists = {
                     }
                 }),
                 revenue: integer({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     db: {
                         isNullable: false
                     },
@@ -539,8 +726,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -550,8 +746,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -571,7 +776,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 productPayment: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductPayment",
                     many: true,
                     db: {
@@ -579,7 +791,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -592,7 +811,14 @@ export const lists: Lists = {
                     }
                 }),
                 fullfilment: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Fullfilment",
                     many: true,
                     db: {
@@ -645,8 +871,17 @@ export const lists: Lists = {
                     }
                 }),
                 startsAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -656,8 +891,17 @@ export const lists: Lists = {
                     }
                 }),
                 endsAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -667,13 +911,27 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
                 }),
                 productVariant: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductVariant",
                     many: true,
                     db: {
@@ -729,8 +987,17 @@ export const lists: Lists = {
                     }
                 }),
                 startsAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -740,8 +1007,17 @@ export const lists: Lists = {
                     }
                 }),
                 endsAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -751,7 +1027,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -762,7 +1045,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 pricing: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Pricing",
                     many: true,
                     db: {
@@ -770,7 +1060,14 @@ export const lists: Lists = {
                     }
                 }),
                 channel: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Channel",
                     many: true,
                     db: {
@@ -839,7 +1136,14 @@ export const lists: Lists = {
                     }
                 }),
                 discount: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Discount",
                     many: false,
                     db: {}
@@ -872,8 +1176,17 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -883,8 +1196,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -894,13 +1216,27 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
                 }),
                 product: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Product",
                     many: false,
                     db: {}
@@ -942,7 +1278,14 @@ export const lists: Lists = {
                     }
                 }),
                 choices: text({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     isFilterable: true,
                     isOrderable: true,
                     db: {
@@ -962,8 +1305,17 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -973,8 +1325,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -984,7 +1345,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -995,7 +1363,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 productType: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductType",
                     many: true,
                     db: {
@@ -1056,8 +1431,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1067,8 +1451,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1078,7 +1471,14 @@ export const lists: Lists = {
                     }
                 }),
                 product: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Product",
                     many: true,
                     db: {
@@ -1100,8 +1500,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1111,8 +1520,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1127,7 +1545,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 childrenCategories: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Category",
                     many: true,
                     db: {
@@ -1135,7 +1560,14 @@ export const lists: Lists = {
                     }
                 }),
                 product: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Product",
                     many: true,
                     db: {
@@ -1180,8 +1612,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1191,8 +1632,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1202,7 +1652,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -1285,8 +1742,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1296,8 +1762,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1307,13 +1782,27 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
                 }),
                 attributes: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Attribute",
                     many: true,
                     db: {
@@ -1321,7 +1810,14 @@ export const lists: Lists = {
                     }
                 }),
                 productsTypes: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductType",
                     many: true,
                     db: {
@@ -1329,7 +1825,14 @@ export const lists: Lists = {
                     }
                 }),
                 products: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Product",
                     many: true,
                     db: {
@@ -1337,7 +1840,14 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroups: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -1345,7 +1855,14 @@ export const lists: Lists = {
                     }
                 }),
                 commisions: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Commision",
                     many: true,
                     db: {
@@ -1353,7 +1870,14 @@ export const lists: Lists = {
                     }
                 }),
                 warehouses: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Warehouse",
                     many: true,
                     db: {
@@ -1361,7 +1885,14 @@ export const lists: Lists = {
                     }
                 }),
                 discount: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Discount",
                     many: true,
                     db: {
@@ -1369,7 +1900,14 @@ export const lists: Lists = {
                     }
                 }),
                 channels: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Channel",
                     many: true,
                     db: {
@@ -1377,7 +1915,14 @@ export const lists: Lists = {
                     }
                 }),
                 collection: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Collection",
                     many: true,
                     db: {
@@ -1457,8 +2002,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1468,8 +2022,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1479,7 +2042,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -1497,7 +2067,14 @@ export const lists: Lists = {
                     }
                 }),
                 ProductVariant: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductVariant",
                     many: true,
                     db: {
@@ -1505,7 +2082,14 @@ export const lists: Lists = {
                     }
                 }),
                 Pricing: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Pricing",
                     many: true,
                     db: {
@@ -1520,7 +2104,14 @@ export const lists: Lists = {
                     }
                 }),
                 Discounts: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Discount",
                     many: true,
                     db: {
@@ -1562,8 +2153,17 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1573,8 +2173,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1584,7 +2193,14 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "User",
                     many: false,
                     db: {}
@@ -1595,7 +2211,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 productStock: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductStock",
                     many: true,
                     db: {
@@ -1653,8 +2276,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1664,8 +2296,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1797,8 +2438,17 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1808,8 +2458,17 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
-                    graphql: {omit: true},
-                    defaultValue:{kind:'now'},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
+                    defaultValue:{
+                        kind:'now'
+                    },
                     db: {
                         isNullable: false,
                         updatedAt: false
@@ -1915,7 +2574,14 @@ export const lists: Lists = {
                     }
                 }),
                 warehouse: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Warehouse",
                     many: false,
                     db: {}
@@ -1956,7 +2622,14 @@ export const lists: Lists = {
                     db: {}
                 }),
                 channel: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Channel",
                     many: true,
                     db: {
@@ -1986,13 +2659,27 @@ export const lists: Lists = {
                     }
                 }),
                 warehouse: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "Warehouse",
                     many: false,
                     db: {}
                 }),
                 productVariant: relationship({
-                    graphql: {omit: true},
+                    ui: {
+                        createView: {
+                            fieldMode: 'hidden'
+                        },
+                        itemView: {
+                            fieldMode: 'hidden'
+                        }
+                    },
                     ref: "ProductVariant",
                     many: true,
                     db: {
