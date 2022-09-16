@@ -92,7 +92,7 @@ export const lists: Lists = {
                         isNullable: false
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 isEmailValidated: checkbox({
