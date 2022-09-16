@@ -76,10 +76,10 @@ export const lists: Lists = {
                     }
                 }),
                 phone: text({
-                    isFilterable: true,
-                    isOrderable: true,
+                    isFilterable: false,
+                    isOrderable: false,
                     db: {
-                        isNullable: false
+                        isNullable: true
                     },
                     validation: {
                         isRequired: false
@@ -92,16 +92,19 @@ export const lists: Lists = {
                         isNullable: false
                     },
                     validation: {
-                        isRequired: false
+                        isRequired: true
                     }
                 }),
                 isEmailValidated: checkbox({
+                    graphql: {omit: true},
                     db: {}
                 }),
                 active: checkbox({
+                    graphql: {omit: true},
                     db: {}
                 }),
                 lastLogin: timestamp({
+                    graphql: {omit: true},
                     db: {
                         isNullable: true,
                         updatedAt: false
@@ -111,6 +114,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: true,
@@ -121,6 +125,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: true,
@@ -131,6 +136,7 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroupsAuthored: relationship({
+                    graphql: {omit: true},
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -138,6 +144,7 @@ export const lists: Lists = {
                     }
                 }),
                 productTypes: relationship({
+                    graphql: {omit: true},
                     ref: "ProductType",
                     many: true,
                     db: {
@@ -145,6 +152,7 @@ export const lists: Lists = {
                     }
                 }),
                 attributes: relationship({
+                    graphql: {omit: true},
                     ref: "Attribute",
                     many: true,
                     db: {
@@ -152,6 +160,7 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroups: relationship({
+                    graphql: {omit: true},
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -159,6 +168,7 @@ export const lists: Lists = {
                     }
                 }),
                 publishers: relationship({
+                    graphql: {omit: true},
                     ref: "Publisher",
                     many: true,
                     db: {
@@ -166,6 +176,7 @@ export const lists: Lists = {
                     }
                 }),
                 collections: relationship({
+                    graphql: {omit: true},
                     ref: "Collection",
                     many: true,
                     db: {
@@ -173,6 +184,7 @@ export const lists: Lists = {
                     }
                 }),
                 products: relationship({
+                    graphql: {omit: true},
                     ref: "Product",
                     many: true,
                     db: {
@@ -180,6 +192,7 @@ export const lists: Lists = {
                     }
                 }),
                 productsVariants: relationship({
+                    graphql: {omit: true},
                     ref: "ProductVariant",
                     many: true,
                     db: {
@@ -187,6 +200,7 @@ export const lists: Lists = {
                     }
                 }),
                 pricings: relationship({
+                    graphql: {omit: true},
                     ref: "Pricing",
                     many: true,
                     db: {
@@ -194,6 +208,7 @@ export const lists: Lists = {
                     }
                 }),
                 discounts: relationship({
+                    graphql: {omit: true},
                     ref: "Discount",
                     many: true,
                     db: {
@@ -201,6 +216,7 @@ export const lists: Lists = {
                     }
                 }),
                 channels: relationship({
+                    graphql: {omit: true},
                     ref: "Channel",
                     many: true,
                     db: {
@@ -208,6 +224,7 @@ export const lists: Lists = {
                     }
                 }),
                 warehouses: relationship({
+                    graphql: {omit: true},
                     ref: "Warehouse",
                     many: true,
                     db: {
@@ -239,6 +256,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -249,6 +267,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -259,6 +278,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -269,6 +289,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 user: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: true,
                     db: {
@@ -297,6 +318,7 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroup: relationship({
+                    graphql: {omit: true},
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -351,6 +373,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -361,6 +384,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -376,6 +400,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -451,10 +476,10 @@ export const lists: Lists = {
                 }),
                 barcode: integer({
                     db: {
-                        isNullable: false
+                        isNullable: true
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 imagesUrl: text({
@@ -506,6 +531,7 @@ export const lists: Lists = {
                     }
                 }),
                 revenue: integer({
+                    graphql: {omit: true},
                     db: {
                         isNullable: false
                     },
@@ -514,6 +540,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -524,6 +551,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -534,6 +562,7 @@ export const lists: Lists = {
                     }
                 }),
                 product: relationship({
+                    graphql: {omit: true},
                     ref: "Product",
                     many: false,
                     db: {}
@@ -544,6 +573,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 productPayment: relationship({
+                    graphql: {omit: true},
                     ref: "ProductPayment",
                     many: true,
                     db: {
@@ -551,6 +581,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -563,6 +594,7 @@ export const lists: Lists = {
                     }
                 }),
                 fullfilment: relationship({
+                    graphql: {omit: true},
                     ref: "Fullfilment",
                     many: true,
                     db: {
@@ -615,6 +647,7 @@ export const lists: Lists = {
                     }
                 }),
                 startsAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -625,6 +658,7 @@ export const lists: Lists = {
                     }
                 }),
                 endsAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -635,11 +669,13 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
                 }),
                 productVariant: relationship({
+                    graphql: {omit: true},
                     ref: "ProductVariant",
                     many: true,
                     db: {
@@ -695,6 +731,7 @@ export const lists: Lists = {
                     }
                 }),
                 startsAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -705,6 +742,7 @@ export const lists: Lists = {
                     }
                 }),
                 endsAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -715,6 +753,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -725,6 +764,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 pricing: relationship({
+                    graphql: {omit: true},
                     ref: "Pricing",
                     many: true,
                     db: {
@@ -732,6 +772,7 @@ export const lists: Lists = {
                     }
                 }),
                 channel: relationship({
+                    graphql: {omit: true},
                     ref: "Channel",
                     many: true,
                     db: {
@@ -800,6 +841,7 @@ export const lists: Lists = {
                     }
                 }),
                 discount: relationship({
+                    graphql: {omit: true},
                     ref: "Discount",
                     many: false,
                     db: {}
@@ -832,6 +874,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -842,6 +885,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -852,11 +896,13 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
                 }),
                 product: relationship({
+                    graphql: {omit: true},
                     ref: "Product",
                     many: false,
                     db: {}
@@ -898,13 +944,14 @@ export const lists: Lists = {
                     }
                 }),
                 choices: text({
+                    graphql: {omit: true},
                     isFilterable: true,
                     isOrderable: true,
                     db: {
                         isNullable: false
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 isRequired: checkbox({
@@ -917,6 +964,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -927,6 +975,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -937,6 +986,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -947,6 +997,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 productType: relationship({
+                    graphql: {omit: true},
                     ref: "ProductType",
                     many: true,
                     db: {
@@ -992,6 +1043,9 @@ export const lists: Lists = {
             }
         }),
     Tag: list({
+            ui: {
+                labelField: "value"     
+            },
             fields: {
                 value: text({
                     isFilterable: true,
@@ -1004,6 +1058,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1014,6 +1069,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1024,6 +1080,7 @@ export const lists: Lists = {
                     }
                 }),
                 product: relationship({
+                    graphql: {omit: true},
                     ref: "Product",
                     many: true,
                     db: {
@@ -1045,6 +1102,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1055,6 +1113,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1070,6 +1129,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 childrenCategories: relationship({
+                    graphql: {omit: true},
                     ref: "Category",
                     many: true,
                     db: {
@@ -1077,6 +1137,7 @@ export const lists: Lists = {
                     }
                 }),
                 product: relationship({
+                    graphql: {omit: true},
                     ref: "Product",
                     many: true,
                     db: {
@@ -1121,6 +1182,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1131,6 +1193,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1141,6 +1204,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -1181,15 +1245,15 @@ export const lists: Lists = {
                         isRequired: true
                     }
                 }),
-                logo: json({
+                logo: text({
                     db: {}
                 }),
                 phone: integer({
                     db: {
-                        isNullable: false
+                        isNullable: true
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 country: text({
@@ -1206,23 +1270,24 @@ export const lists: Lists = {
                     isFilterable: true,
                     isOrderable: true,
                     db: {
-                        isNullable: false
+                        isNullable: true
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 socialMedias: text({
                     isFilterable: true,
                     isOrderable: true,
                     db: {
-                        isNullable: false
+                        isNullable: true
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1233,6 +1298,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1243,11 +1309,13 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
                 }),
                 attributes: relationship({
+                    graphql: {omit: true},
                     ref: "Attribute",
                     many: true,
                     db: {
@@ -1255,6 +1323,7 @@ export const lists: Lists = {
                     }
                 }),
                 productsTypes: relationship({
+                    graphql: {omit: true},
                     ref: "ProductType",
                     many: true,
                     db: {
@@ -1262,6 +1331,7 @@ export const lists: Lists = {
                     }
                 }),
                 products: relationship({
+                    graphql: {omit: true},
                     ref: "Product",
                     many: true,
                     db: {
@@ -1269,6 +1339,7 @@ export const lists: Lists = {
                     }
                 }),
                 permissionGroups: relationship({
+                    graphql: {omit: true},
                     ref: "PermissionGroup",
                     many: true,
                     db: {
@@ -1276,6 +1347,7 @@ export const lists: Lists = {
                     }
                 }),
                 commisions: relationship({
+                    graphql: {omit: true},
                     ref: "Commision",
                     many: true,
                     db: {
@@ -1283,6 +1355,7 @@ export const lists: Lists = {
                     }
                 }),
                 warehouses: relationship({
+                    graphql: {omit: true},
                     ref: "Warehouse",
                     many: true,
                     db: {
@@ -1290,6 +1363,7 @@ export const lists: Lists = {
                     }
                 }),
                 discount: relationship({
+                    graphql: {omit: true},
                     ref: "Discount",
                     many: true,
                     db: {
@@ -1297,6 +1371,7 @@ export const lists: Lists = {
                     }
                 }),
                 channels: relationship({
+                    graphql: {omit: true},
                     ref: "Channel",
                     many: true,
                     db: {
@@ -1304,6 +1379,7 @@ export const lists: Lists = {
                     }
                 }),
                 collection: relationship({
+                    graphql: {omit: true},
                     ref: "Collection",
                     many: true,
                     db: {
@@ -1383,6 +1459,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1393,6 +1470,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1403,6 +1481,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -1420,6 +1499,7 @@ export const lists: Lists = {
                     }
                 }),
                 ProductVariant: relationship({
+                    graphql: {omit: true},
                     ref: "ProductVariant",
                     many: true,
                     db: {
@@ -1427,6 +1507,7 @@ export const lists: Lists = {
                     }
                 }),
                 Pricing: relationship({
+                    graphql: {omit: true},
                     ref: "Pricing",
                     many: true,
                     db: {
@@ -1441,6 +1522,7 @@ export const lists: Lists = {
                     }
                 }),
                 Discounts: relationship({
+                    graphql: {omit: true},
                     ref: "Discount",
                     many: true,
                     db: {
@@ -1482,6 +1564,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1492,6 +1575,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1502,6 +1586,7 @@ export const lists: Lists = {
                     }
                 }),
                 authorUser: relationship({
+                    graphql: {omit: true},
                     ref: "User",
                     many: false,
                     db: {}
@@ -1512,6 +1597,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 productStock: relationship({
+                    graphql: {omit: true},
                     ref: "ProductStock",
                     many: true,
                     db: {
@@ -1569,6 +1655,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1579,6 +1666,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1711,6 +1799,7 @@ export const lists: Lists = {
                     }
                 }),
                 createdAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1721,6 +1810,7 @@ export const lists: Lists = {
                     }
                 }),
                 updatedAt: timestamp({
+                    graphql: {omit: true},
                     defaultValue:{kind:'now'},
                     db: {
                         isNullable: false,
@@ -1817,13 +1907,14 @@ export const lists: Lists = {
                     isFilterable: true,
                     isOrderable: true,
                     db: {
-                        isNullable: false
+                        isNullable: true
                     },
                     validation: {
-                        isRequired: true
+                        isRequired: false
                     }
                 }),
                 warehouse: relationship({
+                    graphql: {omit: true},
                     ref: "Warehouse",
                     many: false,
                     db: {}
@@ -1864,6 +1955,7 @@ export const lists: Lists = {
                     db: {}
                 }),
                 channel: relationship({
+                    graphql: {omit: true},
                     ref: "Channel",
                     many: true,
                     db: {
@@ -1893,11 +1985,13 @@ export const lists: Lists = {
                     }
                 }),
                 warehouse: relationship({
+                    graphql: {omit: true},
                     ref: "Warehouse",
                     many: false,
                     db: {}
                 }),
                 productVariant: relationship({
+                    graphql: {omit: true},
                     ref: "ProductVariant",
                     many: true,
                     db: {

@@ -17,7 +17,7 @@ model User {
   name                            String            @default("")
   email                           String            @unique @default("")
   password                        String
-  phone                           String            @default("")
+  phone                           String?
   identification                  String            @default("")
   isEmailValidated                Boolean           @default(false)
   active                          Boolean           @default(false)
@@ -113,7 +113,7 @@ model ProductVariant {
   sku                                String           @default("")
   extensionName                      String           @default("")
   slug                               String           @default("")
-  barcode                            Int
+  barcode                            Int?
   imagesUrl                          String           @default("")
   mediaUrl                           String           @default("")
   attributesVariantsValues           String           @default("")
@@ -318,11 +318,11 @@ model Publisher {
   id                             String            @id @default(cuid())
   name                           String            @default("")
   slug                           String            @default("")
-  logo                           Json?
-  phone                          Int
+  logo                           String            @default("")
+  phone                          Int?
   country                        String            @default("")
-  description                    String            @default("")
-  socialMedias                   String            @default("")
+  description                    String?
+  socialMedias                   String?
   createdAt                      DateTime          @default(now())
   updatedAt                      DateTime          @default(now())
   authorUser                     User?             @relation("Publisher_authorUser", fields: [authorUserId], references: [id])
@@ -496,7 +496,7 @@ model Address {
   city                   String      @default("")
   zipCode                String      @default("")
   streetAdress           String      @default("")
-  extraDetails           String      @default("")
+  extraDetails           String?
   warehouse              Warehouse?  @relation("Address_warehouse", fields: [warehouseId], references: [id])
   warehouseId            String?     @map("warehouse")
   from_Warehouse_Address Warehouse[] @relation("Warehouse_Address")
