@@ -228,7 +228,10 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             productType: relationship({
                 ui: {
@@ -302,7 +305,10 @@ export const lists: Lists = {
             parentCategory: relationship({
                 ref: "Category",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             childrenCategories: relationship({
                 ui: {
@@ -427,7 +433,10 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             channelPaymentMethod: relationship({
                 ref: "ChannelPaymentMethod",
@@ -517,6 +526,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "ChannelPaymentMethodToChannel"
+                },
+                ui: {
+                    hideCreate: true
                 }
             })
         }
@@ -612,13 +624,19 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             product: relationship({
                 ref: "Product",
                 many: true,
                 db: {
                     relationName: "CollectionToProduct"
+                },
+                ui: {
+                    hideCreate: true
                 }
             })
         }
@@ -654,7 +672,10 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             })
         }
     }),
@@ -746,7 +767,10 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             pricing: relationship({
                 ui: {
@@ -1331,7 +1355,10 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             authorUser: relationship({
                 ui: {
@@ -1358,6 +1385,9 @@ export const lists: Lists = {
                 many: false,
                 db: {
                     relationName: "ProductToProductType"
+                },
+                ui: {
+                    hideCreate: true
                 }
             }),
             tag: relationship({
@@ -1372,6 +1402,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "ProductToCategory"
+                },
+                ui: {
+                    hideCreate: true
                 }
             }),
             collection: relationship({
@@ -1379,6 +1412,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "ProductToCollection"
+                },
+                ui: {
+                    hideCreate: true
                 }
             })
         }
@@ -1415,6 +1451,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "ProductPaymentToProductVariant"
+                },
+                ui: {
+                    hideCreate: true
                 }
             })
         }
@@ -1450,7 +1489,10 @@ export const lists: Lists = {
                 },
                 ref: "Warehouse",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             productVariant: relationship({
                 ui: {
@@ -1563,13 +1605,19 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             attribute: relationship({
                 ref: "Attribute",
                 many: true,
                 db: {
                     relationName: "ProductTypeToAttribute"
+                },
+                ui: {
+                    hideCreate: true
                 }
             })
         }
@@ -1721,7 +1769,10 @@ export const lists: Lists = {
             product: relationship({
                 ref: "Product",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             pricing: relationship({
                 ref: "Pricing",
@@ -1761,6 +1812,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "ProductVariantToChannel"
+                },
+                ui: {
+                    hideCreate: true
                 }
             }),
             fullfilment: relationship({
@@ -2452,6 +2506,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "UserToPermissionGroup"
+                },
+                ui: {
+                    hideCreate: true
                 }
             }),
             publishers: relationship({
@@ -2657,7 +2714,10 @@ export const lists: Lists = {
             publisher: relationship({
                 ref: "Publisher",
                 many: false,
-                db: {}
+                db: {},
+                ui: {
+                    hideCreate: true
+                }
             }),
             productStock: relationship({
                 ui: {
@@ -2679,6 +2739,9 @@ export const lists: Lists = {
                 many: true,
                 db: {
                     relationName: "WarehouseToChannel"
+                },
+                ui: {
+                    hideCreate: true
                 }
             }),
             Address: relationship({
