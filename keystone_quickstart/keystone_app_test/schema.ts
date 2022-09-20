@@ -1832,7 +1832,7 @@ export const lists: Lists = {
             }),
             productStock: relationship({
                 ref: "ProductStock",
-                many: false,
+                many: true,
                 db: {}
             })
         }
