@@ -1774,7 +1774,7 @@ export const lists: Lists = {
             }),
             pricing: relationship({
                 ref: "Pricing",
-                many: false,
+                many: true,
                 db: {}
             }),
             productPayment: relationship({
