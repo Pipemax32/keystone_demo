@@ -1489,10 +1489,7 @@ export const lists: Lists = {
                 },
                 ref: "Warehouse",
                 many: false,
-                db: {},
-                ui: {
-                    hideCreate: true
-                }
+                db: {}
             }),
             productVariant: relationship({
                 ui: {
@@ -1711,6 +1708,7 @@ export const lists: Lists = {
                 }
             }),
             revenue: integer({
+                defaultValue: 0,
                 ui: {
                     createView: {
                         fieldMode: 'hidden'
@@ -1723,7 +1721,7 @@ export const lists: Lists = {
                     isNullable: false
                 },
                 validation: {
-                    isRequired: false
+                    isRequired: true
                 }
             }),
             createdAt: timestamp({
