@@ -355,7 +355,7 @@ model ProductVariant {
   attributesVariantsValues           String           @default("")
   description                        String           @default("")
   weight                             Int
-  revenue                            Int
+  revenue                            Int              @default(0)
   createdAt                          DateTime         @default(now())
   updatedAt                          DateTime         @default(now())
   product                            Product?         @relation("ProductVariant_product", fields: [productId], references: [id])
