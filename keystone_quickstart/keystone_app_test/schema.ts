@@ -1479,14 +1479,6 @@ export const lists: Lists = {
                 }
             }),
             warehouse: relationship({
-                ui: {
-                    createView: {
-                        fieldMode: 'hidden'
-                    },
-                    itemView: {
-                        fieldMode: 'hidden'
-                    }
-                },
                 ref: "Warehouse",
                 many: false,
                 db: {}
