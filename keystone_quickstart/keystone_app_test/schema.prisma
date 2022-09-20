@@ -360,8 +360,7 @@ model ProductVariant {
   updatedAt                          DateTime         @default(now())
   product                            Product?         @relation("ProductVariant_product", fields: [productId], references: [id])
   productId                          String?          @map("product")
-  pricing                            Pricing?         @relation("ProductVariant_pricing", fields: [pricingId], references: [id])
-  pricingId                          String?          @map("pricing")
+  pricing                            Pricing[]        @relation("ProductVariant_pricing")
   productPayment                     ProductPayment[] @relation("ProductVariantToProductPayment")
   authorUser                         User?            @relation("ProductVariant_authorUser", fields: [authorUserId], references: [id])
   authorUserId                       String?          @map("authorUser")
@@ -378,7 +377,6 @@ model ProductVariant {
   from_User_productsVariants         User[]           @relation("ProductVariantToUser")
 
   @@index([productId])
-  @@index([pricingId])
   @@index([authorUserId])
   @@index([productStockId])
 }

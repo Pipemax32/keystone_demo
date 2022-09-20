@@ -1,8 +1,8 @@
- // Like the "config" function we use in keystone.ts, we use functions
+// Like the "config" function we use in keystone.ts, we use functions
 // for putting in our config so we get useful errors. With typescript,
 // we get these even before code runs.
 import { config, list } from '@keystone-6/core';        
-        
+       
 
  // We're using some common fields in the starter. Check out https://keystonejs.com/docs/apis/fields#fields-api
 // for the full list of fields.
@@ -28,19 +28,20 @@ import {
     file,
     image,
 } from '@keystone-6/core/fields';
-        
+       
 
  // The document field is a more complicated field, so it's in its own package
 // Keystone aims to have all the base field types, but you can make your own
 // custom ones.
 import { document } from '@keystone-6/fields-document';
-        
+       
 
  // We are using Typescript, and we want our types experience to be as strict as it can be.
 // By providing the Keystone generated `Lists` type to our lists object, we refine
 // our types to a stricter subset that is type-aware of other lists in our schema
 // that Typescript cannot easily infer.
 import { Lists } from '.keystone/types';
+import { validateRelationship } from './validateRelations';
 
 export const lists: Lists = {
     Address: list({
@@ -248,6 +249,11 @@ export const lists: Lists = {
                     relationName: "AttributeToProductType"
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     Category: list({
@@ -504,6 +510,11 @@ export const lists: Lists = {
                     relationName: "ChannelToWarehouse"
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     ChannelPaymentMethod: list({
@@ -639,6 +650,11 @@ export const lists: Lists = {
                     hideCreate: true
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     Commision: list({
@@ -677,6 +693,11 @@ export const lists: Lists = {
                     hideCreate: true
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     Discount: list({
@@ -809,6 +830,11 @@ export const lists: Lists = {
                     relationName: "DiscountToDiscountRule"
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['discountRule','publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     DiscountRule: list({
@@ -1143,6 +1169,11 @@ export const lists: Lists = {
                     relationName: "PermissionGroupToPermission"
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     Pricing: list({
@@ -1417,6 +1448,11 @@ export const lists: Lists = {
                     hideCreate: true
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['productType','publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     ProductPayment: list({
@@ -1609,6 +1645,11 @@ export const lists: Lists = {
                     hideCreate: true
                 }
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     ProductVariant: list({
@@ -1827,6 +1868,11 @@ export const lists: Lists = {
                 many: true,
                 db: {}
             })
+        },
+        hooks:{     
+            validateInput: ({resolvedData,addValidationError,operation})=>{
+                validateRelationship(['product','publisher'],resolvedData,addValidationError,operation)
+            }
         }
     }),
     Publisher: list({
@@ -2178,7 +2224,7 @@ export const lists: Lists = {
     }),
     Tag: list({
         ui: {
-            labelField: "value"     
+            labelField: "value"    
         },
         fields: {
             value: text({
