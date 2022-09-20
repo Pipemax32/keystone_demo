@@ -839,15 +839,15 @@ export const lists: Lists = {
     }),
     DiscountRule: list({
         fields: {
-            type: text({
-                isFilterable: true,
-                isOrderable: true,
-                db: {
-                    isNullable: false
+            type: select({
+                type:"string",
+                validation:{
+                    isRequired:true
                 },
-                validation: {
-                    isRequired: true
-                }
+                options: [
+                    {label:'Percentage',value:'porcentage'},
+                    {label:'Price',value:'price'}
+                ]
             }),
             value: text({
                 isFilterable: true,
@@ -859,15 +859,19 @@ export const lists: Lists = {
                     isRequired: true
                 }
             }),
-            allocation: text({
-                isFilterable: true,
-                isOrderable: true,
-                db: {
-                    isNullable: false
+            allocation: select({
+                ui:{
+                    displayMode:"segmented-control"
                 },
-                validation: {
-                    isRequired: true
-                }
+                type:"string",
+                validation:{
+                    isRequired:true
+                },
+                options: [
+                    {label:'Product',value:'product'},
+                    {label:'Cart',value:'cart'},
+                    {label:'Collection',value:'collection'}
+                ]
             }),
             description: text({
                 isFilterable: true,
